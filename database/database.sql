@@ -1,21 +1,13 @@
-CREATE DATABASE ng_mascotas_db;
+CREATE DATABASE ng_mascotas_v2_db;
 
-USE ng_mascotas_db;
+USE ng_mascotas_v2_db;
 
-CREATE TABLE mascotas(
+CREATE TABLE mascotasv2 (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(180),
     description VARCHAR(255),
-    image VARCHAR(1000),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    numero_contacto VARCHAR(9)
+    image VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-RENAME TABLE mascotas to mascotas_db
-
-DESCRIBE mascotas;
-
-USE ng_mascotas_db;
-
-ALTER TABLE mascotas
-ADD filesImg VARCHAR(100);
+DESCRIBE mascotasv2;

@@ -16,39 +16,39 @@ const database_1 = __importDefault(require("../database"));
 class MascotasController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const mascotas = yield database_1.default.query('SELECT * FROM mascotas');
-            res.json(mascotas);
+            const games = yield database_1.default.query('SELECT * FROM mascotasv2');
+            res.json(games);
         });
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const mascotas = yield database_1.default.query('SELECT * FROM mascotas WHERE id = ?', [id]);
-            console.log(mascotas.length);
-            if (mascotas.length > 0) {
-                return res.json(mascotas[0]);
+            const games = yield database_1.default.query('SELECT * FROM mascotasv2 WHERE id = ?', [id]);
+            console.log(games.length);
+            if (games.length > 0) {
+                return res.json(games[0]);
             }
             res.status(404).json({ text: "The game doesn't exits" });
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield database_1.default.query('INSERT INTO mascotas set ?', [req.body]);
+            const result = yield database_1.default.query('INSERT INTO mascotasv2 set ?', [req.body]);
             res.json({ message: 'Game Saved' });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const oldMascota = req.body;
-            yield database_1.default.query('UPDATE mascotas set ? WHERE id = ?', [req.body, id]);
+            const oldGame = req.body;
+            yield database_1.default.query('UPDATE mascotasv2 set ? WHERE id = ?', [req.body, id]);
             res.json({ message: "The game was Updated" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM mascotas WHERE id = ?', [id]);
+            yield database_1.default.query('DELETE FROM mascotasv2 WHERE id = ?', [id]);
             res.json({ message: "The game was deleted" });
         });
     }

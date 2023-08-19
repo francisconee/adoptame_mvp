@@ -14,9 +14,8 @@ class MascotasRoutes {
         this.router.get('/', mascotasController_1.default.list);
         this.router.get('/:id', mascotasController_1.default.getOne);
         this.router.post('/', mascotasController_1.default.create);
-        this.router.delete('/:id', mascotasController_1.default.delete);
         this.router.put('/:id', mascotasController_1.default.update);
+        this.router.delete('/:id', mascotasController_1.default.delete);
     }
 }
-const mascotasRoutes = new MascotasRoutes();
-exports.default = mascotasRoutes.router;
+exports.default = new MascotasRoutes().router;

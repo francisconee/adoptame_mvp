@@ -1,10 +1,8 @@
-import express, { Request, Response } from 'express'
-
-const app = express();
+import { Request, Response } from 'express';
 
 class IndexController {
-    
-    public index (req: Request, res: Response){
+
+    public index(req: Request, res: Response) {
         res.json({text: 'API is in /api/mascotas'});
     }
 

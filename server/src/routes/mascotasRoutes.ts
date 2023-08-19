@@ -1,36 +1,23 @@
-import { Router } from 'express';
-import mascotasController  from '../controllers/mascotasController'; // Importa la instancia de la clase
-
-import multer from 'multer';
-
-const express = require('express');
-const router = express.Router();
-
-// Configurar el middleware 'multer' para manejar la carga de archivos
-const upload = multer({ dest: 'uploads/' });
+import express, { Router } from 'express';
+import mascotasController from '../controllers/mascotasController';
 
 class MascotasRoutes {
-  public router: Router = Router();
 
-  constructor() {
-    this.config();
-  }
+    router: Router = Router();
 
-  config(): void {
-    const mascotaController = new mascotasController(); // Crea una instancia de la clase
+    constructor() {
+        this.config();
+    }
 
-    this.router.get('/', mascotaController.list);
-    this.router.get('/:id', mascotaController.getOne);
-    this.router.post('/', mascotaController.create);
-    this.router.delete('/:id', mascotaController.delete);
-    this.router.put('/:id', mascotaController.update);
-    this.router.post('/upload', upload.single('image'), (req, res)=>{
-      res.send({data: "OK"});
-    });
-  }
+    config() {
+        this.router.get('/', mascotasController.list);
+        this.router.get('/:id', mascotasController.getOne);
+        this.router.post('/', mascotasController.create);
+        this.router.put('/:id', mascotasController.update);
+        this.router.delete('/:id', mascotasController.delete);
+    }
+
 }
 
-module.exports = router;
+export default new MascotasRoutes().router;
 
-const mascotasRoutes = new MascotasRoutes();
-export default mascotasRoutes.router;
