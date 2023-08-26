@@ -11,4 +11,11 @@ CREATE TABLE mascotasv2 (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    contraseña VARCHAR(255) NOT NULL
+);
+
 DESCRIBE mascotasv2;
